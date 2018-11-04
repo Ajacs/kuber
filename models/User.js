@@ -4,9 +4,9 @@ import bcrypt from 'bcrypt';
 const Schema = mongoose.Schema;
 
 /**
- * Summary.
- * 
+ *
  * This manage the user data.
+ * 
  * @constructor UserModel
  */
 const UserModel = new Schema({
