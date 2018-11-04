@@ -1,6 +1,6 @@
 import { WEBHOOK_NOTIFICATION } from '../queues';
 import axios from 'axios';
-import { config } from '../config/index';
+import config from '../config';
 
 /**
  * This Job receives the data in order to do a Notification

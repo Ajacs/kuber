@@ -3,15 +3,13 @@ import mongoose from 'mongoose';
 import glob from 'glob';
 import path from 'path';
 import User from './models/User';
-import { config } from './config';
+import config from './config';
 
-const { config } = require('./config');
 const MongoDBUrl = config.server.mongourl;
 const server = new Hapi.Server({
     port: config.server.port,
     host: config.server.host
 });
-require('dotenv').config();
 
 /**
  * Server for Kuber.

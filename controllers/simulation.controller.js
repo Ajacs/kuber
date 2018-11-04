@@ -1,4 +1,4 @@
-import { config } from '../config/index';
+import config  from '../config';
 import request from 'axios';
 import User from '../models/User';
 import TripTrackingPosition from '../models/TripPositionTracking';

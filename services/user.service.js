@@ -1,6 +1,6 @@
 import Boom from 'boom';
 import User from '../models/User';
-import { config } from '../config/index';
+import config from '../config';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -69,7 +69,7 @@ const verifyUniqueUser = req => {
  * @returns {String} token
  */
 const createToken = user => {
-    const { secret, expiresIn, algorithms } = config.authentication;
+    const { secret, expiresIn } = config.authentication;
     let scopes;
     if (user.driver) {
         scopes = 'driver';
@@ -82,7 +82,7 @@ const createToken = user => {
         },
         secret,
         {
-            algorithm: algorithms[0], expiresIn
+            algorithm: 'HS256', expiresIn
         }
     );
     return token;
