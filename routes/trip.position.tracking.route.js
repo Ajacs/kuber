@@ -1,5 +1,5 @@
 import { register_location } from '../controllers/trip.position.tracking.controller';
-import TripPositionTrackingValidator from '../services/validators/TripPositionTrackingValidator';
+import TripPositionTrackingValidator from '../validators/TripPositionTrackingValidator';
 
 const handleError = function (request, h, err) {
 
