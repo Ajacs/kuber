@@ -1,7 +1,6 @@
 import { register } from '../controllers/authentication.controller';
 import UserValidator from '../validators/UserValidator';
 import { verifyUniqueUser } from '../services/user.service';
-import Joi from 'joi';
 const handleError = function (request, h, err) {
 
     if (err.isJoi && Array.isArray(err.details) && err.details.length > 0) {
