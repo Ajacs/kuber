@@ -1,7 +1,8 @@
 const config = {
     server: {
         port: '3000',
-        host: 'localhost'
+        host: 'localhost',
+        mongourl: 'mongodb://localhost:27017/kuber'
     },
     coordinates_server: {
         port: '5000',
