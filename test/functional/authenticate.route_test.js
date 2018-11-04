@@ -3,6 +3,7 @@ process.env.NODE_ENV = 'test';
 import Server from '../../server';
 import { assert } from 'chai';
 import User from '../../models/User';
+import '../test_helper';
 
 
 describe('Authenticate API', () => {
