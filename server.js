@@ -20,7 +20,8 @@ require('dotenv').config();
  * Mongo database. Kuber uses JWT as authentication mechanism.
  * 
  * The routes are in individual files, the system scan the routes
- * folder and register a new route for each file.
+ * folder and register a new route for each file. Each file should
+ * ends with : '*.route.js'
  */
 const startServer = async () => {
 

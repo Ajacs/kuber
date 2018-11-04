@@ -1,5 +1,5 @@
 import { authenticate } from '../controllers/authentication.controller';
-import LoginJoiValidator from '../services/validators/LoginJoiValidator';
+import LoginValidator from '../validators/LoginValidator';
 
 const handleError = function (request, h, err) {
 
@@ -33,7 +33,7 @@ module.exports = {
     handler: authenticate,
     options: {
         validate: {
-            payload: LoginJoiValidator,
+            payload: LoginValidator,
             failAction: handleError
         }
     }
