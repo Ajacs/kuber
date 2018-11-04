@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "NODE_ENV=development nodemon --exec babel-node --presets env,stage-2 server.js",
-    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --require babel-polyfill \"test/**/*_test.js\""
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --require babel-polyfill --exit \"test/**/*_test.js\""
   },
   "repository": {
     "type": "git",

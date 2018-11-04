@@ -3,7 +3,7 @@ process.env.NODE_ENV = 'test';
 import Server from '../../server';
 import chai, { assert, expect } from 'chai';
 import User from '../../models/User';
-
+import '../test_helper';
 
 describe('REGISTER API', () => {
     beforeEach(async () => {

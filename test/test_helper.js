@@ -1,6 +1,16 @@
 import mongoose from 'mongoose';
-import { test }  from '../config';
+import config from '../config';
 
-before(done => {
-    mongoose.connect(test.server.mongourl)
+mongoose.connect(config.server.mongourl)
+before(done => {    
+    mongoose.connection.once('open', () => {
+        console.log('Connected to the test database');
+    })
+    done();
+})
+
+after(done => {
+    console.log('Drop test database');
+    mongoose.connection.db.dropDatabase(done);
+    done();
 })
