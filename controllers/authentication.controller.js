@@ -33,7 +33,9 @@ const register = req => {
  * @return {JSON} 
  */
 const authenticate = req => {
-    return verifyCredentials(req).then(token => token).catch((obj) => {
+    return verifyCredentials(req).then(token => {
+        return { token: token}
+    }).catch((obj) => {
         return Boom.notFound(obj.message)
     });
 }

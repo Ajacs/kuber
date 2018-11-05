@@ -47,11 +47,11 @@ const getUserToken = (email, password) => {
  */
 const createTrip = config => {
     const tripsUrl = getUrl('trips');
-    const { latitude, longitude, token } = config;
+    const { latitude, longitude, clientToken } = config;
 
     return request.post(tripsUrl, { latitude, longitude }, {
         headers: {
-            'Authorization': token
+            'Authorization': clientToken
         }
     });
 }
@@ -167,9 +167,9 @@ const start = async req => {
         await User.create(newDriver);
         await Notification.deleteMany({})
         const { email: driverEmail, id: driverId } = await User.findOne({ driver: true });
-        const { data: driverToken } = await getUserToken(driverEmail, newDriver.password);
-        const { data: token } = await getUserToken(clientEmail, clientPassword);
-        const trip = await createTrip({ latitude, longitude, token });
+        const { data: { token: driverToken }} = await getUserToken(driverEmail, newDriver.password);
+        const { data: { token: clientToken }} = await getUserToken(clientEmail, clientPassword);
+        const trip = await createTrip({ latitude, longitude, clientToken });
         const clientId = trip.data.trip.client;
         const tripId = trip.data.trip._id;
         manageExecutions({
