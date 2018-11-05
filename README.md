@@ -31,7 +31,7 @@ This endpoint let us resgister a new user, for this we need to send the followin
 ```json
 {
 	"email": "test@kuber.com",
-	"password": "securepassword",
+	"password": "password",
 	"name": "Foo",
 	"lastname": "Bar"
 }
@@ -45,8 +45,8 @@ or if you want to create a new user with the driver role:
 	"email": "test@kuber.com",
 	"password": "securepassword",
 	"name": "Foo",
-    "lastname": "Bar",
-    "driver": true
+        "lastname": "Bar",
+        "driver": true
 }
 ```
 
@@ -86,6 +86,8 @@ When you start a new simulation the system clean the database.
 * Redis >= 5.0.0
 
 ## Installation
+
+First of all rename `.env_example` to `.env`, replace the values with the data provided in the email.
 
 For the Kuber service install the dependencies executing:
 
