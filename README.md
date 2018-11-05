@@ -25,16 +25,58 @@ This endpoint let us authenticate a registered user, for this we need to send th
 ```
 ### /api/register
 
-### /api/simulation/start
+This endpoint let us resgister a new user, for this we need to send the following request payload:
+
+**Request payload**
+```json
+{
+	"email": "test@kuber.com",
+	"password": "securepassword",
+	"name": "Foo",
+	"lastname": "Bar"
+}
+```
+
+or if you want to create a new user with the driver role:
+
+**Request payload to create a new driver**
+```json
+{
+	"email": "test@kuber.com",
+	"password": "securepassword",
+	"name": "Foo",
+    "lastname": "Bar",
+    "driver": true
+}
+```
 
 ### /api/trackit/trip_coordinates
 
+This endpoint let us register the driver new coordinates and save to the database in order to have a register of the information for a current trip, the information contains data like: driver_id, client_id, trip_id, latitude, longitude.
+
 ### /api/trips
+
+This endpoint let us create a new Trip. To do this the user needs to be registered on the system, because it requires a Authorization header with the user token.
 
 ### /api/drivers/validate
 
+This enspoint let us verificate if a user is a driver.
+
 ### /api/webhooks/notifier
 
+This endpoint creates a new Notification. For this test the notification is only a new record on the notifications table in the database.
+
+### /api/coordinates
+
+This endpoint do the calculus for the new coordinates based on the current position of the driver.
+
+### /api/simulation/start
+
+This endpoint starts a new Simulation, to do this, requires the credentials of a registered user. After the user provides this information the system find the driver (Just findOne, not the nearest).
+
+This endpoints generates tripPositionTracking, trip, notifications new records on the database.
+
+When you start a new simulation the system clean the database.
 
 
 ## Requirements
@@ -45,4 +87,41 @@ This endpoint let us authenticate a registered user, for this we need to send th
 
 ## Installation
 
+For the Kuber service install the dependencies executing:
 
+```
+npm install
+```
+
+In order to execute the `/api/coordinates` endpoint you need follow this steps (We use python because `geopy` library is really use in order to do the calculus of the new coordinates):
+
+Creates the virtual env:
+```
+cd geodata
+python3 -m venv env
+source env/bin/activate
+```
+
+Execute the server:
+```
+python geodata_server.py
+```
+
+Also you need to execute the nodejs worker:
+
+```
+npm run worker
+```
+
+And finally execute the kuber main server:
+
+```
+npm run start
+```
+
+## Running tests
+We use Mocha, Chai to run the functional tests. Simply run:
+
+```
+npm test
+```
