@@ -78,6 +78,8 @@ This endpoints generates tripPositionTracking, trip, notifications new records o
 
 When you start a new simulation the system clean the database.
 
+### For more information please visit:
+https://documenter.getpostman.com/view/5599090/RzZ6HLZu
 
 ## Requirements
 * Node >= 10.1.0
